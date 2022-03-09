@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 import Post from "../../../Components/System/Post";
+import OutDefault from "../../../Components/Templates/OutDefault";
 
-const MyPosts = () => {
+const AllPosts = () => {
 
     const [posts, setPosts] = useState([]);
 
@@ -11,7 +12,7 @@ const MyPosts = () => {
         const getPosts = async () => {
             await axios ({
                 method: "GET",
-                url: `http://localhost:8000/api/posts`
+                url: `http://10.0.0.8:8000/api/posts`
             }).then((success) => {
                 const data = success.data;
                 setPosts(data);
@@ -22,9 +23,7 @@ const MyPosts = () => {
     }, []);
 
     return (
-        <>
-            <h1>Posts</h1>
-
+        <OutDefault>
             {posts.map(post => {
                 return (
                     <React.Fragment key={post.id}>
@@ -32,8 +31,8 @@ const MyPosts = () => {
                     </React.Fragment>
                 )
             })}
-        </>
+        </OutDefault>
     );
 }
 
-export default MyPosts;
+export default AllPosts;

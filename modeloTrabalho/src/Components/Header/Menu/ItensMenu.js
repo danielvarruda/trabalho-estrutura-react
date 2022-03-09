@@ -4,10 +4,6 @@ export const itensMenu = [
         link: "/"
     },
     {
-        name: "Sobre",
-        link: "/sobre"
-    },
-    {
         name: "Cadastro",
         link: "/cadastro"
     },

@@ -22,11 +22,11 @@ const NavigationMenu = props => {
             <ul>
                 {listMenu.map((item, idx) => {
                     return (
-                        <li key={idx}>
-                            <a href={item.link}>
+                        <a href={item.link} key={idx}>
+                            <li>
                                 {item.name}
-                            </a>
-                        </li>
+                            </li>
+                        </a>
                     )
                 })}
             </ul>

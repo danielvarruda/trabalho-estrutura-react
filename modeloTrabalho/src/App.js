@@ -5,12 +5,11 @@ import axios from "axios";
 import HeaderPage from "./Components/Header/HeaderPage";
 
 import Home from "./Pages/Geral/Home";
-import About from "./Pages/Geral/About";
 import Register from "./Pages/Geral/Register";
 import Login from "./Pages/Geral/Login";
 import Logout from "./Pages/Geral/Logout";
 
-import Posts from "./Pages/System/Posts";
+import AllPosts from "./Pages/System/AllPosts";
 import NewPost from "./Pages/System/NewPost";
 import MyPosts from "./Pages/System/MyPosts";
 
@@ -30,7 +29,7 @@ const App = () => {
 			if (token) {
 				axios({
 					method: "POST",
-					url: `http://localhost:8000/api/auth/validate`,
+					url: `http://10.0.0.8:8000/api/auth/validate`,
 					data: { token }
 				}).then((success) => {
 					if (success.data.success) {
@@ -64,7 +63,7 @@ const App = () => {
 		} else if (token) {
 			axios({
 				method: "POST",
-				url: `http://localhost:8000/api/auth/validate`,
+				url: `http://10.0.0.8:8000/api/auth/validate`,
 				data: { token }
 			}).then((success) => {
 				if (success.data.success) {
@@ -90,13 +89,12 @@ const App = () => {
 
 					{/* Tela Inicial */}
                     <Route path="/" element={<Home/>} />
-					<Route path="/sobre" element={<About/>} />
 					<Route path="/cadastro" element={<Register/>} />
 					<Route path="/login" element={<Login/>} />
 					<Route path="/logout" element={<Logout/>} />
 
 					{/* System */}
-					<Route path="/posts" element={systemRoute(<Posts/>)} />
+					<Route path="/posts" element={systemRoute(<AllPosts/>)} />
 					<Route path="/posts/novo" element={systemRoute(<NewPost/>)} />
 					<Route path="/posts/meus" element={systemRoute(<MyPosts/>)} />
 					

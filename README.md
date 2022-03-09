@@ -7,4 +7,4 @@ Ademais, utilizei uma api bem simples escrita em laravel.
 Para rodar a aplicação segue os seguintes comandos:
 
 - cd usersManager && php artisan serve
-- cd modelo-trabalho && yarn start
+- cd modeloTrabalho && yarn start

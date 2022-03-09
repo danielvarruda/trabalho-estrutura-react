@@ -6,7 +6,7 @@ const HeaderPage = props => {
     return (
         <>
             <header>
-                PROJETO TESTE
+                <p>Ruetter.com</p>
             </header>
 
             <NavigationMenu logged={props.logged} />

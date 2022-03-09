@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 import Post from "../../../Components/System/Post";
+import OutDefault from "../../../Components/Templates/OutDefault";
 
 const MyPosts = () => {
 
@@ -12,7 +13,7 @@ const MyPosts = () => {
         const getMyPosts = async () => {
             await axios ({
                 method: "GET",
-                url: `http://localhost:8000/api/posts/${token}`
+                url: `http://10.0.0.8:8000/api/posts/${token}`
             }).then((success) => {
                 const data = success.data;
                 setPosts(data);
@@ -23,15 +24,13 @@ const MyPosts = () => {
     }, [token]);
 
     return (
-        <>
-            <h1>Meus Posts</h1>
-
+        <OutDefault>
             {posts.map(post => {
                 return (
                     <Post post={post} key={post.id} />
                 )
             })}
-        </>
+        </OutDefault>
     );
 }
 

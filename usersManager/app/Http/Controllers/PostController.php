@@ -11,6 +11,7 @@ class PostController extends Controller
     {
         $posts = Post::select('posts.id', 'users.name', 'posts.text', 'posts.created_at')
                     ->join('users', 'users.id', '=', 'posts.user_id')
+                    ->orderBy('posts.created_at', 'DESC')
                     ->get();
 
         return response()->json($posts, 200);
@@ -19,6 +20,10 @@ class PostController extends Controller
     public function store (Request $request)
     {
         $data = $request->only(['token', 'text']);
+
+        if (!isset($data['text']) && $data['text'] == '')
+            return response()->json(["error" => "Você não comentou nada..."], 201);
+
         $indoUser = json_decode(base64_decode($data['token']));
 
         Post::create([
@@ -36,6 +41,7 @@ class PostController extends Controller
         $myPosts = Post::select('posts.id', 'users.name', 'posts.text', 'posts.created_at')
                         ->join('users', 'users.id', '=', 'posts.user_id')
                         ->where('user_id', $data->id)
+                        ->orderBy('posts.created_at', 'DESC')
                         ->get();
 
         return response()->json($myPosts, 200);

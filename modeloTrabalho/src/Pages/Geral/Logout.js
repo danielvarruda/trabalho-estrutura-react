@@ -1,11 +1,14 @@
 import React from "react";
+import OutDefault from "../../Components/Templates/OutDefault";
 
 const Logout = () => {
     localStorage.removeItem("token");
     window.location = "/login";
 
     return (
-        <h1>Até logo!</h1>
+        <OutDefault>
+            <h1>Até logo!</h1>
+        </OutDefault>
     )
 }
 

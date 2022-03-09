@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import OutDefault from "../../../Components/Templates/OutDefault";
 
 const NewPost = () => {
     const [text, setText] = useState('');
@@ -8,31 +9,36 @@ const NewPost = () => {
     const newPost = async () => {
         await axios ({
             method: "POST",
-            url: `http://localhost:8000/api/posts`,
+            url: `http://10.0.0.8:8000/api/posts`,
             data: {
                 token,
                 text
             }
         }).then((success) => {
-            alert(success.data.mensagem);
-            setText('');
+            console.log(success);
+            if (success.data.mensagem) {
+                alert(success.data.mensagem);
+                setText('');
+            } else {
+                alert(success.data.error);
+            }
         });
     }
 
     return (
-        <>
-            <h1>Novo Post</h1>
-
-            <textarea
-                placeholder="Escreva aqui..."
-                value={text}
-                onChange={(e) => setText(e.target.value)}
-            ></textarea><br/>
-            
-            <button onClick={() => newPost()}>
-                Postar
-            </button>
-        </>
+        <OutDefault>
+            <div className="new_post">
+                <textarea
+                    placeholder="Escreva aqui..."
+                    value={text}
+                    onChange={(e) => setText(e.target.value)}
+                ></textarea><br/>
+                
+                <button onClick={() => newPost()} className="submit">
+                    Postar
+                </button>
+            </div>
+        </OutDefault>
     )
 }
 
