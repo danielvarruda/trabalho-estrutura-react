@@ -12,7 +12,7 @@ const Register = () => {
 
         await axios({
             method: "POST",
-            url: `http://10.0.0.8:8000/api/users`,
+            url: `${process.env.REACT_APP_URL_API}/users`,
             data: {
                 email,
                 name,
@@ -26,7 +26,7 @@ const Register = () => {
 
     return (
         <OutDefault>
-            <div class="page_register">
+            <div className="page_register">
                 <input
                     type="text"
                     placeholder="Nome"

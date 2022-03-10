@@ -13,7 +13,7 @@ const Login = () => {
         }
 
         axios.post(
-            `http://10.0.0.8:8000/api/login`, data
+            `${process.env.REACT_APP_URL_API}/login`, data
         ).then(success => {
 
             if (success.data.success) {
@@ -38,7 +38,7 @@ const Login = () => {
 
     return (
         <OutDefault>
-            <div class="page_register">
+            <div className="page_register">
                 <input
                     type="text"
                     placeholder="Email"
@@ -59,6 +59,8 @@ const Login = () => {
                 >
                     Login
                 </button>
+
+                <br/>
             </div>
         </OutDefault>
     );

@@ -29,7 +29,7 @@ const App = () => {
 			if (token) {
 				axios({
 					method: "POST",
-					url: `http://10.0.0.8:8000/api/auth/validate`,
+					url: `${process.env.REACT_APP_URL_API}/auth/validate`,
 					data: { token }
 				}).then((success) => {
 					if (success.data.success) {
@@ -63,7 +63,7 @@ const App = () => {
 		} else if (token) {
 			axios({
 				method: "POST",
-				url: `http://10.0.0.8:8000/api/auth/validate`,
+				url: `${process.env.REACT_APP_URL_API}/auth/validate`,
 				data: { token }
 			}).then((success) => {
 				if (success.data.success) {

@@ -12,7 +12,7 @@ const AllPosts = () => {
         const getPosts = async () => {
             await axios ({
                 method: "GET",
-                url: `http://10.0.0.8:8000/api/posts`
+                url: `${process.env.REACT_APP_URL_API}/posts`
             }).then((success) => {
                 const data = success.data;
                 setPosts(data);
