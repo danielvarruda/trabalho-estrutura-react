@@ -4,14 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use DB;
 
 class PostController extends Controller
 {
     public function index () 
     {
-        $posts = Post::select('posts.id', 'users.name', 'posts.text', 'posts.created_at')
+        $posts = Post::select('posts.id', 'users.name', 'posts.text', 'posts.created_at', DB::raw('count(posts_liked.id) as likes'))
                     ->join('users', 'users.id', '=', 'posts.user_id')
+                    ->leftJoin('posts_liked', 'posts_liked.post_id', '=', 'posts.id')
                     ->orderBy('posts.created_at', 'DESC')
+                    ->groupBy('posts.id')
                     ->get();
 
         return response()->json($posts, 200);
@@ -38,9 +41,10 @@ class PostController extends Controller
     {
         $data = json_decode(base64_decode($token));
 
-        $myPosts = Post::select('posts.id', 'users.name', 'posts.text', 'posts.created_at')
+        $myPosts = Post::select('posts.id', 'users.name', 'posts.text', 'posts.created_at', DB::raw('count(posts_liked.id) as likes'))
                         ->join('users', 'users.id', '=', 'posts.user_id')
-                        ->where('user_id', $data->id)
+                        ->leftJoin('posts_liked', 'posts_liked.post_id', '=', 'posts.id')
+                        ->where('users.id', $data->id)
                         ->orderBy('posts.created_at', 'DESC')
                         ->get();
 
