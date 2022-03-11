@@ -5,7 +5,7 @@ import NavigationMenu from "./Menu/NavigationMenu";
 const HeaderPage = props => {
     return (
         <>
-            <header>
+            <header className="cabecalho">
                 <p>Ruetter.com</p>
             </header>
 

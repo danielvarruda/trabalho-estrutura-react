@@ -114,6 +114,34 @@ div.page_register input {
     margin: 10px 0px;
 }
 
+div.custom_modal {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(0, 0, 0, .5);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.custom_modal .modal {
+    background: white;
+    width: 30%;
+    min-width: 300px;
+    max-height: 500px;
+}
+
+ul.like_list {
+    list-style-type: none;
+}
+
+ul.like_list li {
+    padding: 10px;
+}
+
 @media screen and (max-width: 900px) {
     section.window_view .page {
         width: 70%;
