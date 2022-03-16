@@ -89,13 +89,14 @@ const Post = props => {
                 </div>
             </div>
 
-            <CustomModal
-                show={modalSeeOrder}
-                onHide={() => setModalSeeOrder(false)}
-            >
-                <h3 class="title_curtidas">Curtidas</h3>
-                <LikesList likes={props.post.like_list} />
-            </CustomModal>
+            { modalSeeOrder ?
+                <CustomModal
+                    onHide={() => setModalSeeOrder(false)}
+                >
+                    <h3 class="title_curtidas">Curtidas</h3>
+                    <LikesList likes={props.post.like_list} />
+                </CustomModal>
+            : '' }
         </>
     );
 }

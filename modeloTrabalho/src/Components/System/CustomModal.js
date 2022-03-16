@@ -1,16 +1,19 @@
 import React from "react";
 
-import { Modal } from "react-bootstrap";
-
 const CustomModal = (props) => {
     return (
-        <Modal {...props}>
-            <div>
-                <button class="close">x</button>
+        <div class="custom_modal">
+            <div class="modal">
+                <button 
+                    class="close" 
+                    onClick={props.onHide}
+                >
+                    x
+                </button>
 
-                { props.children }
+                {props.children}
             </div>
-        </Modal>
+        </div>
     );
 }
 
