@@ -22,15 +22,21 @@ const AllPosts = () => {
         getPosts();
     }, []);
 
+    const refreshPage = () => {
+        window.location.reload();
+    }
+
     return (
         <OutDefault>
-            {posts.map(post => {
-                return (
-                    <React.Fragment key={post.id}>
-                        <Post post={post} />
-                    </React.Fragment>
-                )
-            })}
+            <div className="action_post">
+                <button
+                    onClick={() => refreshPage()}    
+                >
+                    Buscar novos posts
+                </button>
+            </div>
+
+            {posts.map(post => <Post post={post} key={post.id} /> )}
         </OutDefault>
     );
 }

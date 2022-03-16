@@ -114,6 +114,12 @@ div.page_register input {
     margin: 10px 0px;
 }
 
+.title_curtidas {
+    padding: 10px;
+    background-color: var(--dark-blue);
+    color: white;
+}
+
 div.custom_modal {
     width: 100vw;
     height: 100vh;
@@ -125,6 +131,7 @@ div.custom_modal {
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 5px;
 }
 
 div.custom_modal .modal {
@@ -132,14 +139,44 @@ div.custom_modal .modal {
     width: 30%;
     min-width: 300px;
     max-height: 500px;
+    position: relative;
+}
+
+div.custom_modal .close {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background-color: var(--dark-blue);
+    color: white;
+    font-weight: bolder;
+    font-size: 20px;
 }
 
 ul.like_list {
     list-style-type: none;
+    padding: 0px;
 }
 
 ul.like_list li {
     padding: 10px;
+    margin: 0px;
+}
+
+div.action_post {
+    text-align: center;    
+}
+
+div.action_post button {
+    background-color: var(--dark-blue);
+    color: white;
+    border: none;
+    padding: 8px;
+    font-size: 13px;
+    font-weight: bolder;
+    border-radius: 3px;
 }
 
 @media screen and (max-width: 900px) {

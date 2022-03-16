@@ -42,8 +42,6 @@ const Post = props => {
                         'id': success.data.alteration.user_id,
                         'name': success.data.alteration.user_name
                     });
-
-                    console.log(props.post.like_list);
                 }
                 
             }
@@ -93,7 +91,9 @@ const Post = props => {
 
             <CustomModal
                 show={modalSeeOrder}
+                onHide={() => setModalSeeOrder(false)}
             >
+                <h3 class="title_curtidas">Curtidas</h3>
                 <LikesList likes={props.post.like_list} />
             </CustomModal>
         </>
