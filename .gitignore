@@ -1,5 +1,3 @@
-modeloTrabalho/node_modules
-modeloTrabalho/.env
-
-usersManager/vendor
-usersManager/.env
+*/node_modules
+*/.env
+*/vendor
